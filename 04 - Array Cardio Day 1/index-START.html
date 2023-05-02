@@ -54,18 +54,34 @@ let totalYears= inventors.reduce((total,inventor)=>{
   return total +(inventor.passed-inventor.year);
 },0)
     // 5. Sort the inventors by years lived
-
+const oldest = inventors.sort(function(a,b){
+  const lastGuy = a.passed-a.year;
+  const nextGuy = b.passed- b.year;
+  return lastGuy>nextGuy?-1:1;
+  }
+)
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+let sorted = people.sort((a,b)=>{
+  aLast = a.split(', ')[1];
+  bLast = b.split(', ')[1];
+  return aLast>bLast?1:-1;
+})
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    const transportation = data.reduce((obj,item)=>{
+      if(!obj[item]){
+        obj[item]=0;
+      }
+      obj[item]++;
+      return obj;
+    },{})
   </script>
 </body>
 </html>
